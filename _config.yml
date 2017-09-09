@@ -12,6 +12,7 @@ github_username:  jekyll
 
 # Build settings
 markdown: kramdown
+google_analytics: UA-106150678-1
 
 facebook: https://www.facebook.com/MetroCebuNorthForceBranchManulife/
 tel: +63323492495
