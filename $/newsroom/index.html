@@ -48,16 +48,32 @@ title: Newsroom | Metro Cebu North Force
 
                             <div class="timeline-border"></div>
 
+                            {% for post in site.posts limit:10 %}
                             <div class="entry clearfix">
                                 <div class="entry-timeline">
-                                    10<span>Feb</span>
+                                    {{ post.date | date: '%d' }}<span>
+                                        {% assign m = post.date | date: "%m" %}
+                                            {% case m %}
+                                            {% when '1' %}Jan
+                                            {% when '2' %}Feb
+                                            {% when '3' %}Mar
+                                            {% when '4' %}Apr
+                                            {% when '5' %}May
+                                            {% when '6' %}Jun
+                                            {% when '7' %}Jul
+                                            {% when '8' %}Aug
+                                            {% when '9' %}Sep
+                                            {% when '10' %}Oct
+                                            {% when '11' %}Nov
+                                            {% when '12' %}Dec
+                                        {% endcase %}</span>
                                     <div class="timeline-divider"></div>
                                 </div>
                                 <div class="entry-image">
-                                    <a href="/images/blog/full/17.jpg" data-lightbox="image"><img class="image_fade" src="/images/blog/standard/17.jpg" alt="Standard Post with Image"></a>
+                                    <a href="{{ post.img_full }}" data-lightbox="image"><img class="image_fade" src="{{ page.img_standard }}" alt="Standard Post with Image"></a>
                                 </div>
                                 <div class="entry-title">
-                                    <h2><a href="blog-single.php">This is a Standard post with a Preview Image</a></h2>
+                                    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                                 </div>
                                 <ul class="entry-meta clearfix">
                                     <li><a href="#"><i class="icon-user"></i> admin</a></li>
@@ -66,10 +82,11 @@ title: Newsroom | Metro Cebu North Force
                                     <li><a href="#"><i class="icon-camera-retro"></i></a></li>
                                 </ul>
                                 <div class="entry-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in. Eligendi, deserunt, blanditiis est quisquam doloribus voluptate id aperiam ea ipsum magni aut perspiciatis rem voluptatibus officia eos rerum deleniti quae nihil facilis repellat atque vitae voluptatem libero at eveniet veritatis ab facere.</p>
-                                    <a href="blog-single.php"class="more-link">Read More</a>
+                                    <p> {{ post.excerpt }}</p>
+                                    <a href="{{ post.url }}"class="more-link">Read More</a>
                                 </div>
                             </div>
+                            {%endfor%}
 
                             <div class="entry clearfix">
                                 <div class="entry-timeline">
